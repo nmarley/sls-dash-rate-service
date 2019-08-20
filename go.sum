@@ -1,0 +1,6 @@
+github.com/aws/aws-lambda-go v1.6.0 h1:T+u/g79zPKw1oJM7xYhvpq7i4Sjc0iVsXZUaqRVVSOg=
+github.com/aws/aws-lambda-go v1.6.0/go.mod h1:zUsUQhAUjYzR8AuduJPCfhBuKWUaDbQiPOG+ouzmE1A=
+github.com/go-redis/redis v6.15.2+incompatible h1:9SpNVG76gr6InJGxoZ6IuuxaCOQwDAhzyXg+Bs+0Sb4=
+github.com/go-redis/redis v6.15.2+incompatible/go.mod h1:NAIEuMOZ/fxfXJIrKDQDz8wamY7mA7PouImQ2Jvg6kA=
+github.com/nmarley/dashrates v0.0.0-20190819191145-b13c337d7293 h1:Mp4m1xPs43RaZf1Yn2CgOs/7jRiZ72jWhwP6YiwyJ+4=
+github.com/nmarley/dashrates v0.0.0-20190819191145-b13c337d7293/go.mod h1:aGouMFkZKrrcr9WF1Y/HF+2vgSsQMh2A0JsNsAiBWnQ=

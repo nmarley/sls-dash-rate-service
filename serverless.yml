@@ -1,0 +1,105 @@
+# Welcome to Serverless!
+#
+# This file is the main config file for your service.
+# It's very minimal at this point and uses default values.
+# You can always add more config options for more control.
+# We've included some commented out config examples here.
+# Just uncomment any of them to get that config option.
+#
+# For full config options, check the docs:
+#    docs.serverless.com
+#
+# Happy Coding!
+
+service: dash-exchange-rates
+#app: your-app-name
+#tenant: your-tenant-name
+
+# You can pin your service to only deploy with a specific Serverless version
+# Check out our docs for more details
+# frameworkVersion: "=X.X.X"
+frameworkVersion: '>=1.28.0 <2.0.0'
+
+# custom domain for API gateway (using route53)
+# https://serverless.com/blog/serverless-api-gateway-domain/
+plugins:
+  - serverless-domain-manager
+
+custom:
+  customDomain:
+    domainName: ${file(config.${self:provider.stage}.yaml):domainName}
+    basePath: ""
+    stage: ${self:provider.stage}
+    createRoute53Record: false
+
+    # (necessary if you use a wildcard SSL cert)
+    certificateName: ${file(config.${self:provider.stage}.yaml):certificateName}
+# -- end custom domain stuff
+
+provider:
+  name: aws
+  runtime: go1.x
+
+  # you can overwrite defaults here
+  stage: dev
+  region: ${file(config.${self:provider.stage}.yaml):awsRegion}
+  memorySize: 256
+  timeout: 10
+  stackTags:
+    app: "DashRateAPI"
+    name: "DashExchangeRateCFStack"
+
+  tags:
+    name: "Dash Rate API"
+
+  # you can add statements to the Lambda function's IAM Role here
+  iamRoleStatements:
+    - Effect: "Allow"
+      Action:
+        - "s3:ListBucket"
+      Resource: { "Fn::Join" : ["", ["arn:aws:s3:::", { "Ref" : "ServerlessDeploymentBucket" } ] ]  }
+    - Effect: "Allow"
+      Action:
+        - "s3:PutObject"
+      Resource:
+        Fn::Join:
+          - ""
+          - - "arn:aws:s3:::"
+            - "Ref" : "ServerlessDeploymentBucket"
+            - "/*"
+
+  # Add AWS managed policies here
+  #iamManagedPolicies:
+  #  - arn:aws:iam::aws:policy/service-role/AWSLambdaVPCAccessExecutionRole
+
+  # you can define service wide environment variables here
+  environment:
+    REDIS_URL: ${file(config.${self:provider.stage}.yaml):redisURL}
+
+package:
+  exclude:
+    - ./**
+  include:
+    - ./bin/**
+
+functions:
+
+  # set up the fetch function
+  fetch:
+    handler: bin/fetch
+    events:
+      - schedule: rate(30 minutes)
+    tags:
+      name: "Dash Exchange Rates Fetch Lambda"
+    vpc: ${file(config.${self:provider.stage}.yaml):vpc}
+
+  # set up the serve function
+  serve:
+    handler: bin/serve
+    events:
+      - http:
+          path: exchange
+          method: get
+    tags:
+      name: "Dash Exchange Rates API Service"
+    vpc: ${file(config.${self:provider.stage}.yaml):vpc}
