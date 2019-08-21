@@ -35,7 +35,13 @@ func Handler(ctx context.Context) (Response, error) {
 		IsBase64Encoded: false,
 		Body:            string(body),
 		Headers: map[string]string{
-			"Content-Type": "application/json",
+			"Content-Type":           "application/json",
+			"X-MyCompany-Func-Reply": "serve-handler",
+
+			// Set CORS headers
+			"Access-Control-Allow-Headers": "X-Requested-With,Content-Type",
+			"Access-Control-Allow-Origin":  "*",
+			"Access-Control-Allow-Methods": "GET, HEAD, OPTIONS",
 		},
 	}
 
