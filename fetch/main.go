@@ -113,6 +113,7 @@ func fetchAndStoreRates() error {
 		dashrates.NewHitBTCAPI(),
 		dashrates.NewYobitAPI(),
 		dashrates.NewCexAPI(),
+		dashrates.NewBigONEAPI(),
 	}
 
 	var wg sync.WaitGroup
