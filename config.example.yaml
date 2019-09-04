@@ -1,0 +1,18 @@
+---
+# file: config.example.yaml
+
+# general
+awsRegion: "us-tirefire-1"
+redisURL: "redis.example.com:6379"
+
+# VPC config
+vpc:
+  securityGroupIds:
+    - sg-0123456789abcdef0
+  subnetIds:
+    - subnet-0123456789abcdef0
+    - subnet-123456789abcdef01
+
+# custom domain configuration
+domainName: "api.example.com"
+certificateName: "*.example.com"

@@ -39,6 +39,8 @@ file, where STAGE is the deployment stage used (defaults to `dev`). This
 includes VPC security groups and subnet IDs, custom domain for the API Gateway
 and the URL for the Redis instance.
 
+Feel free to copy the `config.example.yaml` file and modify the values therein.
+
 ## Contributing
 
 Feel free to dive in! [Open an issue](https://github.com/nmarley/sls-dash-rate-service/issues/new) or submit PRs.
