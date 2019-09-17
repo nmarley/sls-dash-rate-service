@@ -8,3 +8,5 @@ github.com/nmarley/dashrates v0.0.0-20190819191145-b13c337d7293 h1:Mp4m1xPs43RaZ
 github.com/nmarley/dashrates v0.0.0-20190819191145-b13c337d7293/go.mod h1:aGouMFkZKrrcr9WF1Y/HF+2vgSsQMh2A0JsNsAiBWnQ=
 github.com/nmarley/dashrates v0.0.0-20190904183643-3e3725f82a51 h1:i15LwZ42W8yncxcT4dqIwmVvKr2oGmORcLSLDRXKbdM=
 github.com/nmarley/dashrates v0.0.0-20190904183643-3e3725f82a51/go.mod h1:aGouMFkZKrrcr9WF1Y/HF+2vgSsQMh2A0JsNsAiBWnQ=
+github.com/nmarley/dashrates v0.0.0-20190917174101-b1e3289f47e5 h1:VUbnfiB45GbadLh1W34rqJ3CBwfmgzV1l0sDVxLvTnw=
+github.com/nmarley/dashrates v0.0.0-20190917174101-b1e3289f47e5/go.mod h1:aGouMFkZKrrcr9WF1Y/HF+2vgSsQMh2A0JsNsAiBWnQ=
