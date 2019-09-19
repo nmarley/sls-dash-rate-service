@@ -99,9 +99,6 @@ func fetchAndStoreRates() error {
 	// 2. For each exchange, pull the rate and convert to USD amounts if needed
 	//    (using BTC/USD rate).
 	apis := []dashrates.RateAPI{
-		// Coinbase is pending Dash integration (see Pro API below)
-		//dashrates.NewCoinbaseAPI(),
-
 		dashrates.NewBinanceAPI(),
 		dashrates.NewKrakenAPI(),
 		dashrates.NewBitfinexAPI(),
@@ -115,6 +112,7 @@ func fetchAndStoreRates() error {
 		dashrates.NewCexAPI(),
 		dashrates.NewBigONEAPI(),
 		dashrates.NewCoinbaseProAPI(),
+		dashrates.NewCoinbaseAPI(),
 	}
 
 	var wg sync.WaitGroup
