@@ -114,6 +114,12 @@ func fetchAndStoreRates() error {
 		dashrates.NewCoinbaseProAPI(),
 		dashrates.NewCoinbaseAPI(),
 		dashrates.NewDigifinexAPI(),
+		dashrates.NewIndodaxAPI(),
+		dashrates.NewKucoinAPI(),
+		dashrates.NewBiboxAPI(),
+		dashrates.NewWhitebitAPI(),
+		dashrates.NewCointradeAPI(),
+		dashrates.NewOKExAPI(),
 	}
 
 	var wg sync.WaitGroup
